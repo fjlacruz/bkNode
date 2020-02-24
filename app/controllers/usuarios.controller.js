@@ -272,13 +272,13 @@ exports.buscarUsuario = (req, res) => {
       if (err.kind === "not_found") {
         res.status(404).send({
           response: "fail",
-          message: `No se ha encontrado un usuario con el ID ${req.params.usuario}`,
+          message: `No se ha encontrado el usuario: ${req.params.usuario}`,
           code: 404
         });
       } else {
         res.status(500).send({
           response: "fail",
-          message: "Error al obtener unsuario con ID " + req.params.usuario,
+          message: "Error al obtener unsuario: " + req.params.usuario,
           code: 500
         });
       }
