@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // analizar las solicitudes de content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(body_parser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {

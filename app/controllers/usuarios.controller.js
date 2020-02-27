@@ -16,18 +16,19 @@ exports.login = (req, res) => {
         res.status(404).send({
           response: "fail",
           status: "OK",
-          message: `No se encontro el usario con RUT:  ${req.params.rut}.`,
+          message: "Credenciales invalidas",
           code: 404
         });
       } else {
         res.status(500).send({
           response: "fail",
           status: "OK",
-          message: "Error al actualizar usuario con ID: " + req.params.rut,
+          message: "Error al procesar peticion ",
           code: 500
         });
       }
-    } else res.send({ res: "success", token: data, status: "OK", code: 200 });
+    } else
+      res.send({ response: "success", token: data, status: "OK", code: 200 });
   });
 };
 //================================= Logout ==========================================//
