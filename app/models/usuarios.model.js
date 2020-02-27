@@ -138,6 +138,7 @@ Usuarios.updateById = (id_usuario, usuario, result) => {
       usuario.rut,
       usuario.usuario,
       usuario.telefono,
+      usuario.email,
       id_usuario
     ],
     (err, res) => {

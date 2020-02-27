@@ -9,7 +9,7 @@ module.exports = app => {
   //====================================================//
 
   //================= Login ============================//
-  app.put("/login", usuarios.login);
+  app.post("/login", usuarios.login);
 
   //======== Listado general de usuarios ===============//
   app.get("/usuarios", usuarios.findAll);
