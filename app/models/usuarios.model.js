@@ -3,6 +3,7 @@ var sha1 = require("sha1");
 const random = require("random");
 var md5 = require("md5");
 var bodyParser = require("body-parser");
+var nodemailer = require("nodemailer");
 
 // constructor
 const Usuarios = function(usuario) {
@@ -16,7 +17,13 @@ const Usuarios = function(usuario) {
   this.telefono = usuario.telefono;
   this.token = usuario.token;
   this.estatus = usuario.estatus;
+  this.asunto = usuario.asunto;
 };
+
+// const Email = function(email) {
+//   this.asunto = email.asunto;
+//   this.email = email.email;
+// };
 
 //================================= Login de usuario ==========================================//
 Usuarios.login = (usuario, result) => {
@@ -259,6 +266,44 @@ Usuarios.buscarUsuario = (usuario, result) => {
                  t_usuarios u
                  left join n_roles r on (r.id_rol= u.rol) 
                  WHERE u.usuario = '${usuario}'`;
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    if (res.length) {
+      console.log("usuario encontrado: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    result({ kind: "not_found" }, null);
+  });
+};
+
+//================================= email ==========================================//
+Usuarios.sendEmail = (usuario, result) => {
+  let query = `SELECT * from t_usuarios limit 1`;
+
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "jlacruz@idsistemas15.com",
+      pass: "FFjj_1980**"
+    }
+  });
+
+  const mailOptions = {
+    from: "jlacruz@idsistemas15.com", // sender address
+    to: "jlacruz@idsistemas15.com", // list of receivers
+    subject: `'${usuario.asunto}'`, // Subject line
+    html: "<p>Your html here</p>" // plain text body
+  };
+  transporter.sendMail(mailOptions, function(err, info) {
+    if (err) console.log(err);
+    else console.log(info);
+  });
 
   sql.query(query, (err, res) => {
     if (err) {

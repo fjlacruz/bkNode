@@ -1,5 +1,6 @@
 const Usuarios = require("../models/usuarios.model.js");
 var md5 = require("md5");
+var nodemailer = require("nodemailer");
 
 //================================= Login ==========================================//
 exports.login = (req, res) => {
@@ -284,5 +285,41 @@ exports.buscarUsuario = (req, res) => {
         });
       }
     } else res.send({ response: data, status: "OK", code: 200 });
+  });
+};
+
+//================================= Email ==========================================//
+exports.sendEmail = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "El contenido no puede ser vacio..!"
+    });
+  }
+  console.log(req.body);
+  Usuarios.sendEmail(new Usuarios(req.body), (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          response: "fail",
+          status: "OK",
+          message: "Email invalido",
+          code: 404
+        });
+      } else {
+        res.status(500).send({
+          response: "fail",
+          status: "OK",
+          message: "Error al procesar peticion ",
+          code: 500
+        });
+      }
+    } else
+      res.send({
+        message: "Email enviado",
+        response: data,
+        status: "OK",
+        code: 200
+      });
   });
 };

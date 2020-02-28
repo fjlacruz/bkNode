@@ -37,4 +37,7 @@ module.exports = app => {
 
   //================= Buscar Usuario ============================//
   app.get("/buscar-usuario/:usuario", usuarios.buscarUsuario);
+
+  //================= Emviar Email ============================//
+  app.post("/enviar-email", usuarios.sendEmail);
 };
