@@ -288,7 +288,7 @@ exports.buscarUsuario = (req, res) => {
   });
 };
 
-//================================= Email ==========================================//
+//================================= Enviar Email ==========================================//
 exports.sendEmail = (req, res) => {
   // Validate Request
   if (!req.body) {
