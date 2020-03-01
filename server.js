@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/endponits.routes.js")(app);
 
+//====================== Configuracion para crear PDF ====================================//
 // var doc = new pdf();
 
 // doc.setFontSize(22);
@@ -56,7 +57,7 @@ require("./app/routes/endponits.routes.js")(app);
 // fs.writeFile(fileName, doc.output("pdf"), function(err, data) {
 //   console.log(" PDF creado con exito...!!!!");
 // });
-
+//====================== Fin configuracion para crear PDF =================================//
 // establecer puerto, escuchar solicitudes
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
