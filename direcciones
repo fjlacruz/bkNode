@@ -1,0 +1,17 @@
+NODE
+
+https://www.dbigcloud.com/sistemas-operativos/258-como-actualizar-node-js.html
+https://medium.com/bb-tutorials-and-thoughts/how-to-write-production-ready-node-js-rest-api-javascript-version-db64d3941106
+https://www.freecodecamp.org/news/you-should-never-ever-run-directly-against-node-js-in-production-maybe-7fdfaed51ec6/
+https://pm2.keymetrics.io/
+https://carlosazaustre.es/aplicacion-node-como-servicio-upstart
+https://www.youtube.com/watch?v=noGqVkBzMXc
+https://www.npmjs.com/package/pdf
+https://www.oscarblancarteblog.com/2018/01/16/implementar-json-web-tokens-nodejs/
+https://www.oscarblancarteblog.com/2017/06/08/autenticacion-con-json-web-tokens/
+
+
+ANGULAR
+https://www.devglan.com/angular/angular-8-crud-example
+
+ SELECT SUBSTRING(TIMEDIFF(DATE_FORMAT(NOW( ), "%H:%i:%S" ), "21:00:00"),2,1) as diferencia;
